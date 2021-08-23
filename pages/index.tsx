@@ -21,7 +21,6 @@ const Home: NextPage = () => {
     
     const content = await rawResponse.json();
     
-    //console.log(content)
     setDataUrl(content.image);
 
   }
@@ -45,7 +44,7 @@ const Home: NextPage = () => {
         <div>
           <button onClick={() => crinjometro()}>Crinjometro</button>
           <button onClick={() => signOut()}>Sair</button>
-          { dataUrl && <a download="teste.png" href={dataUrl}>Baixar</a> }
+          { dataUrl && <a download="crinjometro.png" href={dataUrl}>Baixar</a> }
         </div>
       }
       
