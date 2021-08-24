@@ -2,14 +2,14 @@ import nc from "next-connect";
 import cors from "cors";
 import Canvas from 'canvas'
   
-Canvas.registerFont('font/leaguespartan.bold.ttf', {family: 'leaguespartan'})
+// Canvas.registerFont('font/leaguespartan.bold.ttf', {family: 'leaguespartan'})
 
 const applyText = (canvas, username) => {
     const context = canvas.getContext('2d');
     let fontSize = 70;
     
     do {
-        context.font = `bold ${fontSize -= 10}px leaguespartan`;
+        context.font = `bold ${fontSize -= 10}px Impact`;
     } while (context.measureText(username).width > canvas.width - 300);
     
     return context.font;
@@ -20,7 +20,6 @@ const handler = nc()
   .post(async (req, res) => {
 
     // Pegando o nome do usuário
-    //AAAAAAAAAAAAAAAAAAAAABCQSwEAAAAABXCBKzQbqjCyXQz%2F%2Bdayns6HsBM%3Dttvonw1PUwZt7d3a5qksR1jnEnWk9uyQbzkjIBkKqAKHBb7q4A
     
     const responseTwitter = await fetch(`https://api.twitter.com/1.1/users/lookup.json?user_id=${req.body.userId}`, {
       method: 'GET',
@@ -50,7 +49,7 @@ const handler = nc()
     context.fillStyle = '#CBA45B';
     context.fillText(username, canvas.width / 12.5, canvas.height / 2.8);
 
-    context.font = 'bold 50px leaguespartan';
+    context.font = 'bold 50px Impact';
     context.fillStyle = '#ffffff';
     context.fillText(`é ${porcentagem}% cringe`, canvas.width / 12.5, canvas.height / 1.68);
 
@@ -66,7 +65,7 @@ const handler = nc()
 
     const image = canvas.toDataURL('image/png');
 
-    var base64Data = image.replace("data:image/png;base64,", "");
+    //var base64Data = image.replace("data:image/png;base64,", "");
 
     res.send({
       image: image.toString(),
